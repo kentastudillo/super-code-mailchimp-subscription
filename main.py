@@ -5,25 +5,21 @@ import requests
 URL = "https://us16.api.mailchimp.com/3.0/lists/{list_id}/members"
 
 
-def main(api_key, list_id, email_address, fields):
+def main(data):
     """ Add new user to mailchimp subscription. """
 
     response = {}
     response["type"] = "error"
 
-    headers = {"Content-Type": "application/json"}
+    data = json.loads(data)
 
-    data = {
-        "email_address": email_address,
-        "status": "subscribed",
-        "merge_fields": fields
-    }
+    headers = {"Content-Type": "application/json"}
 
     try:
         result = requests.post(
-            URL.format(list_id=list_id),
-            auth=('username', api_key),
-            data=json.dumps(data),
+            URL.format(list_id=data["list_id"]),
+            auth=('username', data["apikey"]),
+            data=json.dumps(data["data"]),
             headers=headers)
 
         result_json = json.loads(result.text)
