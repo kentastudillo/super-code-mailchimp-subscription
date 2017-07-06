@@ -22,12 +22,12 @@ data = {
   }
 }
 
-repo = supercode.call(
+response = supercode.call(
     "super-code-function",
     "your-supercode-api-key",
     data=json.dumps(data)
 
-pprint(repo)
+pprint(response)
 ```
 
 **Note:** Supercode has not been launched yet. This is for internal testing only.
