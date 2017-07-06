@@ -6,6 +6,7 @@ A [Supercode](http://gosupercode.com) function that adds a new subscriber to lis
 
 ```
 import json
+import pprint
 import supercode
 
 data = {
